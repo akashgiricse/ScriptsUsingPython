@@ -8,7 +8,6 @@ Dependenciies:
 #### 1. Clone this repoistory
 ```bash
 git clone https://github.com/akashgiricse/ScriptsUsingPython.git
-cd quiz_app
 ```
 
 ### Copy any text which contains phone numbers and emails.
