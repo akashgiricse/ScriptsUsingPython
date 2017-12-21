@@ -12,7 +12,7 @@ git clone https://github.com/akashgiricse/ScriptsUsingPython.git
 
 ### Copy any text which contains phone numbers and emails.
 
-### 2. Open terminal in PhoneNumberAndEmailAddressExtractor directory and type
+#### 2. Open terminal in PhoneNumberAndEmailAddressExtractor directory and type
 ```
 python3 phoneAndEmail.py
 ```
