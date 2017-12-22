@@ -1,3 +1,5 @@
+# Reading and writing files using diff type of modules
+
 #String with a file path
 import os
 os.path.join('usr', 'bin', 'spam')
@@ -103,9 +105,50 @@ print(helloContent) # prints content inside the hello.txt file
 >>> print(content)
 entered into shell 
 Hello again.
->>> 
 
 
+# Saving Variable with the shelve Module
+>>> import shelve
+>>> shelfFile = shelve.open('mydata')
+>>> cats = ['Zophie', 'Pooka', 'Simon']
+>>> shelfFile['cats'] = cats
+>>> shelfFile.close() # will create a binary shelf file named mydata.db
+# now we can see what data has been stored in our 'mydata' file.
+>>> shelfFile = shelve.open('mydata')
+>>> type(shelfFile)
+<class 'shelve.DbfilenameShelf'>
+>>> shelfFile['cat']
+['Zophie', 'Pooka', 'Simom']
+>>> shelfFile.close()
+# to see the key and value
+>>> shelfFile = shelve.open('mydata')
+>>> list(shelfFile.keys())
+['cat']
+>>> list(shelfFile.values())
+[['Zophie', 'Pooka', 'Simom']]
+>>>
+
+
+# Saving variables with the pprint.pformat() Function
+>>> import pprint
+>>> cats = [{'name': 'Zophie', 'desc': 'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
+>>> pprint.pformat(cats)
+"[{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]"
+>>> fileObj = open('myCats.py', 'w')
+>>> fileObj.write('cats = ' + pprint.pformat(cats) + '\n')
+83
+>>> fileObj.close()
+>>>
+
+# now the myCats.py itselfe works as module which can be imported.
+>>> import myCats
+>>> myCats.cats
+[{'name': 'Zophie', 'desc': 'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
+>>> myCats.cats[0]
+{'name': 'Zophie', 'desc': 'chubby'}
+>>> myCats.cats[0]['name']
+'Zophie'
+>>>
 
 
 
