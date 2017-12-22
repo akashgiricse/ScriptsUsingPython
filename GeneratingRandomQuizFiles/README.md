@@ -11,7 +11,7 @@ git clone https://github.com/akashgiricse/ScriptsUsingPython.git
 ```
 
 #### 2. Open terminal in GeneratingRandomQuizFiles directory and type
-```
+```bash
 python3 randomQuizGenerator.py
 ```
 
