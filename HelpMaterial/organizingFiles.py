@@ -58,3 +58,41 @@ for folderName, subfolders, filenames in os.walk('/home/rango/ExampleFolder'):
 		print('FILE INSIDE ' + folderName + ': ' + filename)
 
 	print('')
+
+""" OUTPUT is 
+The current folder is /home/rango/ExampleFolder
+SUBFOLDER OF /home/rango/ExampleFolder: subFolder
+FILE INSIDE /home/rango/ExampleFolder: doc.txt
+
+The current folder is /home/rango/ExampleFolder/subFolder
+SUBFOLDER OF /home/rango/ExampleFolder/subFolder: subSubFolder
+FILE INSIDE /home/rango/ExampleFolder/subFolder: subDoc.txt
+
+The current folder is /home/rango/ExampleFolder/subFolder/subSubFolder
+FILE INSIDE /home/rango/ExampleFolder/subFolder/subSubFolder: subSubDoc.txt
+"""
+
+
+# Compressing Files with the zipfile Module
+import zipfile, os
+# create object named "exampleZip"
+exampleZip = zipfile.ZipFile('/home/rango/Downloads/Create-a-blog.zip')
+print(exampleZip.namelist()) # prints all the files and folderes contained in zip file
+"""
+for example 
+['Navigation.html', 'blog/', 'blog/css/', 'blog/css/bootstrap.min.css',
+'blog/css/font-awesome.min.css', 'blog/Header.html', 'blog/Footer.html']
+
+"""
+spamInfo = exampleZip.getinfo('Navigation.html')
+#prints 3926
+print(spamInfo.file_size)
+#prints 902
+print(spamInfo.compress_size)
+#prints 
+#compressed file is 4.35x smaller!
+print('compressed file is %sx smaller!' %(round(spamInfo.file_size/spamInfo.compress_size, 2)))
+exampleZip.close()
+
+# Extracting from ZIP Files
+
