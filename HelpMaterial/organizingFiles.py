@@ -96,3 +96,19 @@ exampleZip.close()
 
 # Extracting from ZIP Files
 
+import zipfile, os
+exampleZip = zipfile.ZipFile('/home/rango/Downloads/Create-a-blog.zip')
+#extract file to /home/rango/Download
+exampleZip.extractall('/home/rango/Downloads')
+exampleZip.close()
+
+# Creating and Adding to ZIP Files
+import zipfile
+
+# create a new ZIP file named new.zip that compresses contents of spam.txt
+newZip = zipfile.ZipFile('new.zip','w')
+newZip.write('spam.txt', compress_type=zipfile.ZIP_DEFLATED)
+newZip.close()
+
+
+
