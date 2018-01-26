@@ -178,3 +178,93 @@ print(spanElem.get('some_nonexistent_addr') == None)
 # prins {'id': 'author'}
 print(spanElem.attrs)
 
+
+#######################################################
+# Controlling the Browser with the selenium Module
+#####################################
+# Starting a Selenium-controlled Browser
+
+from selenium import webdriver
+# It will open firefox
+# Please add "geckodriver" to your /local/bin folder
+# Choose your "gechodriver" here https://github.com/mozilla/geckodriver/releases
+browserFirefox = webdriver.Firefox()
+
+# It will open Chrome
+# Please add "chromedriver" to your /local/bin folder
+# Choose your "chromedriver" here https://chromedriver.storage.googleapis.com/index.html?path=2.35/
+browserChrome = webdriver.Chrome()
+
+# prints <class 'selenium.webdriver.firefox.webdriver.WebDriver'>
+type(browserFirefox)
+# will open firefox with the given site
+browserFirefox.get('http://inventwithpython.com')
+
+###################################33
+# Finding Elements on the Page
+
+from selenium import webdriver
+
+browser = webdriver.Firefox()
+browser.get('http://inventwithpython.com')
+
+
+try:
+	elem = browser.find_element_by_class_name('card-img-top')
+	print('Found <%s> element with that class name! ' % (elem.tag_name))
+except:
+	print('Was not able to find an element with that name.')
+# will print Found <img> element with that class name!
+
+
+#######################33
+# Clicking the Page
+##############
+
+from selenium import webdriver
+
+#open 4chan site in chrome
+browser = webdriver.Chrome()
+browser.get('https://www.4chan.org')
+# click on Technology link on 4chan home page
+linkElem = browser.find_element_by_link_text('Technology')
+linkElem.click() 
+# Click on popup window for accepting their terms and condition
+acceptElem = "//button[@data-cmd='ok-disc']"
+browser.find_element_by_xpath(acceptElem).click()
+
+###############################333
+# Filling Out and Submitting Forms
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+browser.get('https://www.reddit.com/')
+
+userNameElem = browser.find_element_by_name('user')
+userNameElem.send_keys('Your_username_here')
+passwordElem =browser.find_element_by_name('passwd')
+passwordElem.send_keys('Your_Password_here')
+passwordElem.submit()
+
+############################################
+# Sending Special Keys
+###########################333
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+browser = webdriver.Chrome()
+browser.get('https://www.reddit.com/')
+
+htmlElem = browser.find_element_by_tag_name('html')
+# moves to the bottom of the page
+htmlElem.send_keys(Keys.END)
+# moves at the top
+htmlElem.send_keys(Keys.HOME)
+
+####################33333
+# Clicking Browser Buttons
+browser.back() # Clicks the Back button
+browser.forward() # Clicks the Forward button
+browser.refresh() # Clicks the Refresh/Reload button
+browser.quit() # Clicks the Close Window button
+
