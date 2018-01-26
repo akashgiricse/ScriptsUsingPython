@@ -5,7 +5,7 @@ Dependenciies:
 - Python 3.6.x
 - Ubuntu 17.04 or later or Linux Mint 18.x 
 
-#### 1. Clone this repoistory
+#### 1. Clone this repoistory or download zip file [here](https://github.com/akashgiricse/ScriptsUsingPython/archive/master.zip)
 ```bash
 git clone https://github.com/akashgiricse/ScriptsUsingPython.git
 ```

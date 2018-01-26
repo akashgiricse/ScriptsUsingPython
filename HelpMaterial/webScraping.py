@@ -93,3 +93,88 @@ exampleFile = open('example.html')
 exampleSoup = bs4.BeautifulSoup(exampleFile)
 print(type(exampleSoup))
 
+#########################################
+# Finding an Element with select() Method
+
+# Some Examples of CSS Selectors
+
+soup.select('div') :: All elements named <div>
+soup.select('#author') :: The element with an id attribute of author
+soup.select('.notice') :: All elements that use a CSS class attribute named notice
+soup.select('div span') :: All elements named <span> that are within an element named <div>
+soup.select('div > span') :: All elements named <span> taht are directly within an element named <div>
+soup.select('input[name') :: All elements named <input> that have a name attribute with any value
+soup.select('input[type="button"]') :: All elements named <input> that have an attribute named type with value button
+
+###########################################################
+
+# the select() method will return a list of Tag objects.
+################################################3
+
+# for example here is an example.html
+
+# <!-- This is the example.html example file. -->
+# <html>
+# <head>
+# 	<title>The Website Title</title>
+# </head>
+# <body>
+# 	<p>Download my <strong>Python</strong> book from <a href="http://
+# 	inventwithpython.com">my website</a>.</p>
+# 	<p class="slogan">Learn Python the easy way!</p>
+# 	<p class="slogan">Learn Python the hard way!</p>
+# 	<p>By <span id="author">Al Sweigart</span></p>
+# </body>
+# </html>
+
+import bs4
+exampleFile = open('example.html')
+exampleSoup = bs4.BeautifulSoup(exampleFile.read(), "html.parser")
+elems = exampleSoup.select('#author')
+# prints <class 'list'>
+print(type(elems))
+# prints 1
+# that is there is one Tag object in the list
+print(len(elems))
+# prints <class 'bs4.element.Tag'>
+print(type(elems[0]))
+# prints Al Sweigart
+print(elems[0].getText())
+# prints <span id="author">Al Sweigart</span>
+print(str(elems[0]))
+# prints {'id': 'author'}
+print(elems[0].attrs)
+
+pElems = exampleSoup.select('p')
+
+# prins 4
+print(len(pElems))
+# prins {'class': ['slogan']}
+print(pElems[2].attrs)
+# prints <p>Download my <strong>Python</strong> book from <a href="http://inventwithpython.com">my website</a>.</p>
+print(str(pElems[0]))
+# prints Download my Python book from my website.
+print(pElems[0].getText())
+# prints <p class="slogan">Learn Python the easy way!</p>
+print(str(pElems[1]))
+# prins Learn Python the easy way!
+print(pElems[1].getText())
+
+
+#######################################################33
+# Getting Data from an Element's Attributes
+###########################################33
+import bs4
+
+soup = bs4.BeautifulSoup(open('example.html'), "html.parser")
+# store the first match element in spanElem.
+spanElem = soup.select('span')[0]
+# Print <span id="author">Al Sweigart</span>
+print(str(spanElem))
+# prints author
+print(spanElem.get('id'))
+# prints True
+print(spanElem.get('some_nonexistent_addr') == None) 
+# prins {'id': 'author'}
+print(spanElem.attrs)
+
